@@ -1,58 +1,18 @@
 <script>
-	import Header from './Header.svelte';
 	import '../app.css';
-
-	/** @type {{children: import('svelte').Snippet}} */
-	let { children } = $props();
+	import BottomNavi from '../component/common/BottomNavigator.svelte';
 </script>
 
-<div class="app">
-	<Header />
+<!-- app.html %sveltekit.head%에 해당하는 위치에 삽입될 태그 -->
+<svelte:head>
+	<!-- 모든 페이지의 타이틀은 고정할 것임으로 /src/routes/+layout.svelte 에 작성 -->
+	<!-- 이곳에 작성된 내용은 모든 하위 페이지들에 공통 적용 -->
+	<title>
+	  Undertopia.com
+	</title>
+</svelte:head>
 
-	<main>
-		{@render children()}
-	</main>
-
-	<footer>
-		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
-	</footer>
+<div>
+	<slot/>
+	<BottomNavi/>
 </div>
-
-<style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
-</style>
