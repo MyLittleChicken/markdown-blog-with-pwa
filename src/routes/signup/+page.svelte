@@ -52,18 +52,6 @@
 			/>
 		</div>
 
-		<!-- 이메일 입력 필드 -->
-		<div>
-			<Label for="email" class="block text-sm font-medium text-gray-700">Email</Label>
-			<Input
-				id="email"
-				type="email"
-				bind:value={email}
-				placeholder="Email"
-				class="mt-1"
-			/>
-		</div>
-
 		<!-- 회원가입 버튼 -->
 		<Button on:click={handleSignup} class="w-full mt-4 bg-primary-500 hover:bg-primary-600 text-white">
 			Sign Up

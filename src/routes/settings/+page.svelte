@@ -1,17 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
 	import { Toggle } from 'flowbite-svelte';
-	import { goto } from '$app/navigation';
-	import { isOk } from '../stores.js';
+	import { initializeAuthState } from '../stores.js';
 
-	onMount(async () => {
-		if ($isOk) {
-			console.log('로그인 상태입니다.');
-		} else {
-			// Alert 를 띄워 로그인 창으로 이동
-			alert('로그인이 필요한 서비스입니다.');
-			await goto('/signin');
-		}
+	onMount(() => {
+		// 로그인 상태를 확인하고, 로그인상태가 아니라면 '/signin'으로 이동
+		initializeAuthState();
 	});
 </script>
 

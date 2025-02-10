@@ -1,6 +1,13 @@
 <script>
 	import '../app.css';
+	import { onMount } from 'svelte';
+	import { initializeAuthState, isOk } from './stores.js';
 	import BottomNavi from '../component/common/BottomNavigator.svelte';
+
+	onMount(() => {
+		initializeAuthState(); // 페이지 로드 시 로그인 상태 초기화
+		console.log('공통 레이아웃에서 찍은 로그인 상태:', $isOk);
+	});
 </script>
 
 <!-- app.html %sveltekit.head%에 해당하는 위치에 삽입될 태그 -->
@@ -10,6 +17,7 @@
 	<title>
 	  Undertopia.com
 	</title>
+	<link rel="manifest" href="manifest.json" />
 </svelte:head>
 
 <div>

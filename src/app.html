@@ -1,11 +1,25 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		%sveltekit.head%
 	</head>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('/service-worker.js') // /static 폴더에 서비스 워커 파일 위치
+				.then((registration) => {
+					console.log('Service Worker 등록 성공:', registration);
+				})
+				.catch((error) => {
+					console.log('Service Worker 등록 실패:', error);
+				});
+		}
+	</script>
+
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>

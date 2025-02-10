@@ -1,12 +1,22 @@
 <script>
+	import { page } from '$app/stores';
 	import { Button, Input, Label } from 'flowbite-svelte';
+	import { setAuthState } from '../stores.js';
+	import { goto } from '$app/navigation';
 	let account = '';
 	let password = '';
 
 	// 로그인 버튼 클릭 시 처리할 함수
 	function handleLogin() {
-		// 로그인 처리 로직 작성
-		console.log("Logging in with:", account, password);
+		// 로그인 처리 (여기서는 로그인 성공했다고 가정)
+		setAuthState(true);
+
+		// 쿼리파라미터 가져옴
+		const urlParams = new URLSearchParams(window.location.search);
+		const redirectTo = urlParams.get('redirect');
+
+		console.log('redirect:', redirectTo);
+		goto(redirectTo || '/post'); // 원래 페이지가 없으면 홈으로 이동
 	}
 </script>
 
